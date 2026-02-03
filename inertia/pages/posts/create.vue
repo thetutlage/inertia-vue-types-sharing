@@ -6,7 +6,7 @@ import { Form } from '@adonisjs/inertia/vue'
 <template>
   <Head title="New Post" />
 
-  <div>
+  <div class="form-container">
     <h1>New Post</h1>
 
     <Form route="posts.store" #default="{ processing, errors }">

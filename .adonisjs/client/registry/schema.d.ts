@@ -16,39 +16,6 @@ export interface Registry {
       response: unknown
     }
   }
-  'posts.index': {
-    methods: ["GET","HEAD"]
-    pattern: '/posts'
-    types: {
-      body: {}
-      paramsTuple: []
-      params: {}
-      query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/posts_controller').default['index']>>>
-    }
-  }
-  'posts.show': {
-    methods: ["GET","HEAD"]
-    pattern: '/posts/:id'
-    types: {
-      body: {}
-      paramsTuple: [string]
-      params: { id: string }
-      query: {}
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/posts_controller').default['show']>>>
-    }
-  }
-  'comments.store': {
-    methods: ["POST"]
-    pattern: '/posts/:id/comments'
-    types: {
-      body: ExtractBody<InferInput<(typeof import('#validators/comment').createCommentValidator)>>
-      paramsTuple: [string]
-      params: { id: string }
-      query: ExtractQuery<InferInput<(typeof import('#validators/comment').createCommentValidator)>>
-      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comments_controller').default['store']>>>
-    }
-  }
   'new_account.create': {
     methods: ["GET","HEAD"]
     pattern: '/signup'
@@ -104,6 +71,17 @@ export interface Registry {
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['destroy']>>>
     }
   }
+  'posts.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/posts'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/posts_controller').default['index']>>>
+    }
+  }
   'posts.create': {
     methods: ["GET","HEAD"]
     pattern: '/posts/create'
@@ -113,6 +91,28 @@ export interface Registry {
       params: {}
       query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/posts_controller').default['create']>>>
+    }
+  }
+  'posts.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/posts/:id'
+    types: {
+      body: {}
+      paramsTuple: [string]
+      params: { id: string }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/posts_controller').default['show']>>>
+    }
+  }
+  'comments.store': {
+    methods: ["POST"]
+    pattern: '/posts/:id/comments'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/comment').createCommentValidator)>>
+      paramsTuple: [string]
+      params: { id: string }
+      query: ExtractQuery<InferInput<(typeof import('#validators/comment').createCommentValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/comments_controller').default['store']>>>
     }
   }
   'posts.store': {

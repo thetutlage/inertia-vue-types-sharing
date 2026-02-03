@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
 import { Link } from '@adonisjs/inertia/vue'
-const props = defineProps<{
-  cnpjs: Cnpj[]
-  redirectUri: string
-}>()
 </script>
 
 <template>

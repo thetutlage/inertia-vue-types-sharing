@@ -12,9 +12,6 @@ import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
 
 router.on('/').renderInertia('home', {}).as('home')
-router.get('posts', [controllers.Posts, 'index'])
-router.get('posts/:id', [controllers.Posts, 'show'])
-router.post('posts/:id/comments', [controllers.Comments, 'store'])
 
 router
   .group(() => {
@@ -29,8 +26,11 @@ router
 router
   .group(() => {
     router.post('logout', [controllers.Session, 'destroy'])
-
-    router.get('posts/create', [controllers.Posts, 'create'])
-    router.post('posts', [controllers.Posts, 'store'])
   })
   .use(middleware.auth())
+
+router.get('posts', [controllers.Posts, 'index'])
+router.get('posts/create', [controllers.Posts, 'create']).use(middleware.auth())
+router.get('posts/:id', [controllers.Posts, 'show'])
+router.post('posts/:id/comments', [controllers.Comments, 'store'])
+router.post('posts', [controllers.Posts, 'store']).use(middleware.auth())

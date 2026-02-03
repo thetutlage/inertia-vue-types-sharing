@@ -12,24 +12,6 @@ const routes = {
     tokens: [{"old":"/","type":0,"val":"/","end":""}],
     types: placeholder as Registry['home']['types'],
   },
-  'posts.index': {
-    methods: ["GET","HEAD"],
-    pattern: '/posts',
-    tokens: [{"old":"/posts","type":0,"val":"posts","end":""}],
-    types: placeholder as Registry['posts.index']['types'],
-  },
-  'posts.show': {
-    methods: ["GET","HEAD"],
-    pattern: '/posts/:id',
-    tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
-    types: placeholder as Registry['posts.show']['types'],
-  },
-  'comments.store': {
-    methods: ["POST"],
-    pattern: '/posts/:id/comments',
-    tokens: [{"old":"/posts/:id/comments","type":0,"val":"posts","end":""},{"old":"/posts/:id/comments","type":1,"val":"id","end":""},{"old":"/posts/:id/comments","type":0,"val":"comments","end":""}],
-    types: placeholder as Registry['comments.store']['types'],
-  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',
@@ -60,11 +42,29 @@ const routes = {
     tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
     types: placeholder as Registry['session.destroy']['types'],
   },
+  'posts.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts',
+    tokens: [{"old":"/posts","type":0,"val":"posts","end":""}],
+    types: placeholder as Registry['posts.index']['types'],
+  },
   'posts.create': {
     methods: ["GET","HEAD"],
     pattern: '/posts/create',
     tokens: [{"old":"/posts/create","type":0,"val":"posts","end":""},{"old":"/posts/create","type":0,"val":"create","end":""}],
     types: placeholder as Registry['posts.create']['types'],
+  },
+  'posts.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/posts/:id',
+    tokens: [{"old":"/posts/:id","type":0,"val":"posts","end":""},{"old":"/posts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['posts.show']['types'],
+  },
+  'comments.store': {
+    methods: ["POST"],
+    pattern: '/posts/:id/comments',
+    tokens: [{"old":"/posts/:id/comments","type":0,"val":"posts","end":""},{"old":"/posts/:id/comments","type":1,"val":"id","end":""},{"old":"/posts/:id/comments","type":0,"val":"comments","end":""}],
+    types: placeholder as Registry['comments.store']['types'],
   },
   'posts.store': {
     methods: ["POST"],
