@@ -18,12 +18,16 @@ export default class PostsController {
     const post = await Post.findOrFail(params.id)
     await post.load('user')
 
-    const comments = await Comment.query().where('post_id', post.id).orderBy('created_at', 'asc')
     const commentEmail = request.cookie('comment_email') ?? ''
 
     return inertia.render('posts/show', {
       post: PostTransformer.transform(post),
-      comments: CommentTransformer.transform(comments),
+      comments: inertia.defer(async () => {
+        const comments = await Comment.query()
+          .where('post_id', post.id)
+          .orderBy('created_at', 'asc')
+        return CommentTransformer.transform(comments)
+      }),
       commentEmail,
     })
   }

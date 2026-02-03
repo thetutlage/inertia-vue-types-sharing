@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
 import { Form } from '@adonisjs/inertia/vue'
-import type { Data } from '@generated/data'
+import type { Post, Comment } from '~/types'
 
 const props = defineProps<{
-  post: Data.Post
-  comments: Data.Comment[]
+  post: Post
+  comments: Comment[]
   commentEmail: string
 }>()
 </script>
