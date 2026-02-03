@@ -5,7 +5,7 @@ import type { Post, Comment } from '~/types'
 
 const props = defineProps<{
   post: Post
-  comments: Comment[]
+  comments?: Comment[]
   commentEmail: string
 }>()
 </script>
@@ -23,9 +23,9 @@ const props = defineProps<{
     </article>
 
     <section class="comments">
-      <h2>Comments ({{ comments.length }})</h2>
+      <h2>Comments ({{ comments?.length }})</h2>
 
-      <div class="comment-list" v-if="comments.length > 0">
+      <div class="comment-list" v-if="comments && comments.length > 0">
         <div class="comment" v-for="comment in comments" :key="comment.id">
           <div class="comment-header">
             <span class="comment-email">{{ comment.email }}</span>
